@@ -3,8 +3,8 @@ import { StyleSheet, Text, TextInput, View, TouchableOpacity,Image, Alert, Image
 import { useState, useEffect } from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import bg from '../assets/bg.png'
-//import {auth} from "./firebase";
-//import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signInAnonymously, onAuthStateChanged } from "firebase/auth";
+import {auth} from "./firebase";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 
 const Login = ({navigation}) => {
 
