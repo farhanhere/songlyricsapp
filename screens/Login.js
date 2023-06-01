@@ -22,7 +22,7 @@ const Login = ({navigation}) => {
       const user= userCredential.user;
       global.userID = user.uid
       console.log('user');
-      navigation.navigate('Home');
+      navigation.navigate('NavBar');
       console.log('home');
       setEmail('');
       setPassword('');
@@ -31,7 +31,7 @@ const Login = ({navigation}) => {
         'Login Successfully',
         '',
         [
-          {text: 'OK', onPress: () => navigation.navigate('Home')}
+          {text: 'OK', onPress: () => navigation.navigate('NavBar')}
         ]
       );
     }
@@ -47,9 +47,7 @@ const Login = ({navigation}) => {
     navigation.navigate('Signup');
   };
 
-  const goToHome = () => {
-    navigation.navigate('Home');
-  };
+  
 
   return (
 
@@ -57,7 +55,7 @@ const Login = ({navigation}) => {
 
        <View style={styles.email}>
         <AntDesign name='mail' style={styles.icon}></AntDesign>
-        <TextInput placeholder='Email'  value={email} onChangeText={setEmail}></TextInput>
+        <TextInput style={styles.textinput} placeholder='Email'  value={email} onChangeText={setEmail}></TextInput>
        </View>
        <View style={styles.password}>
         <AntDesign name='lock' style={styles.icon}></AntDesign>
@@ -133,7 +131,6 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 25,
     marginLeft: 5,
-    //marginTop: -22
   },
   forget:{
     marginTop: 20,

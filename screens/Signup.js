@@ -71,11 +71,11 @@ const Signup = ({ navigation }) => {
 
       <Text style={styles.textemail}>Email</Text>
       <View style={styles.textbox}>
-        <TextInput placeholder='Email' value={email} onChangeText={setEmail}></TextInput>
+        <TextInput style={styles.textinput} placeholder='Email' value={email} onChangeText={setEmail}></TextInput>
        </View>
        <Text style={styles.text}>Name</Text>
        <View style={styles.textbox}>
-        <TextInput placeholder='Name'  value={name} onChangeText={setName}></TextInput>
+        <TextInput style={styles.textinput} placeholder='Name'  value={name} onChangeText={setName}></TextInput>
        </View>
        <Text style={styles.text}>Password</Text>
        <View style={styles.textbox}>
@@ -126,6 +126,10 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     borderRadius: 10
   },
+  textinput: {
+    flex: 1,
+    fontSize: 14
+  },
   text:{
     fontSize: 18,
     fontWeight: 'bold',
@@ -175,19 +179,15 @@ const styles = StyleSheet.create({
     color: 'black',
     padding: 10,
     fontSize: 25,
-    marginLeft: 160
+    marginLeft: 5
   },
   iconeye1:{
     color: 'black',
     padding: 10,
     fontSize: 25,
-    marginLeft: 150
+    marginLeft: 5,
   },
-  textinput: {
-    flex: 1,
-    //paddingLeft: ,
-    fontSize: 14
-  },
+
   textemail:{
     fontSize: 18,
     fontWeight: 'bold',

@@ -1,10 +1,21 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, Alert } from 'react-native';
 
-const Home = () => {
+const Home=()=>{
   return (
-    <View><Text>home</Text></View>
-  )
+    <View style={styles.container}>
+      <Text style={{color:'white'}}>Home!</Text>
+    </View>
+  );
 }
 
-export {Home}
+const styles = StyleSheet.create({
+  container: {flex: 1, 
+    justifyContent: 'center',
+     alignItems: 'center',
+      backgroundColor: 'black'
+  },
+  
+});
+
+export  {Home};
