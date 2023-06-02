@@ -54,7 +54,13 @@ const NavBar = () => {
             }}>
 
                 <Tab.Screen name={"Home"} component={Home} options={{
-                    
+                    headerShown: true,
+                    headerStyle: {
+                        backgroundColor: 'black',
+                      },
+                      headerTitleStyle: {
+                        color: 'white',
+                      },
                     tabBarIcon: ({ focused }) => (
                         <View style={{
                             // centring Tab Button...
@@ -82,6 +88,13 @@ const NavBar = () => {
                 })}></Tab.Screen>
 
                 <Tab.Screen name={"Likes"} component={Likes} options={{
+                      headerShown: true,
+                      headerStyle: {
+                          backgroundColor: 'black',
+                        },
+                        headerTitleStyle: {
+                          color: 'white',
+                        },
                     tabBarIcon: ({ focused }) => (
                         <View style={{
                             // centring Tab Button...
@@ -113,6 +126,13 @@ const NavBar = () => {
 
 
                 <Tab.Screen name={"Settings"} component={Settings} options={{
+                    headerShown: true,
+                    headerStyle: {
+                        backgroundColor: 'black',
+                      },
+                      headerTitleStyle: {
+                        color: 'white',
+                      },
                     tabBarIcon: ({ focused }) => (
                         <View style={{
                             // centring Tab Button...
