@@ -6,13 +6,15 @@ const Home = () => {
   const [search, setSearch] = useState(''); // Search input
   const [lyrics, setLyrics] = useState('');
   const [artistName, setArtistName] = useState('');
-  const [thumbnail, setThumbnail] = useState('');
+  const [releasedYear, setReleasedYear] = useState('');
+  const [thumbnailUrl, setThumbnailUrl] = useState('');
 
   const onChangeSearch = (text) => {
     setSearch(text);
     setLyrics('Search song for lyrics'); // Clear the lyrics when search input changes
     setArtistName(''); // Clear the artist name when search input changes
-    setThumbnail(''); // Clear the thumbnail when search input changes
+    setReleasedYear(''); // Clear the released year when search input changes
+    setThumbnailUrl(''); // Clear the thumbnail URL when search input changes
   };
 
   const fetchData = async () => {
@@ -36,7 +38,6 @@ const Home = () => {
       const songId = firstResult.id;
       const artist = firstResult.primary_artist.name;
       setArtistName(artist); // Set the artist name in the state
-      setThumbnail(firstResult.header_image_thumbnail_url); // Set the thumbnail image URL in the state
       const lyricsOptions = {
         method: 'GET',
         url: 'https://genius-song-lyrics1.p.rapidapi.com/song/lyrics/',
@@ -51,6 +52,12 @@ const Home = () => {
       const songLyrics = lyricsData.lyrics.lyrics.body.html;
       const formattedLyrics = songLyrics.replace(/<(?:.|\n)*?>/gm, ''); // Remove HTML tags
       setLyrics(formattedLyrics);
+
+      const thumbnail = firstResult.song_art_image_thumbnail_url;
+      setThumbnailUrl(thumbnail);
+
+      const releasedYear = firstResult.release_date_for_display;
+      setReleasedYear(releasedYear);
     } catch (error) {
       console.error(error);
     }
@@ -70,10 +77,9 @@ const Home = () => {
         </TouchableOpacity>
       </View>
       <ScrollView contentContainerStyle={styles.lyricsContainer}>
-        {thumbnail !== '' && (
-          <Image source={{ uri: thumbnail }} style={styles.thumbnail} />
-        )}
+        {thumbnailUrl !== '' && <Image source={{ uri: thumbnailUrl }} style={styles.thumbnail} />}
         {artistName !== '' && <Text style={styles.artistName}>Written By: {artistName}</Text>}
+        {releasedYear !== '' && <Text style={styles.releasedYear}>Released Date: {releasedYear}</Text>}
         <Text style={styles.lyricsText}>{lyrics}</Text>
       </ScrollView>
     </View>
@@ -88,18 +94,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   input: {
-    width: 300,
+    width: 270,
     height: 40,
     backgroundColor: '#F5F5F5',
     borderRadius: 10,
     padding: 10,
     fontSize: 14,
+    margin:3
   },
   txt1: {
-    fontSize: 50,
+    fontSize: 40,
     color: '#fff',
     fontWeight: 'bold',
   },
+
   btn: {
     backgroundColor: '#E31C79',
     height: 40,
@@ -125,17 +133,24 @@ const styles = StyleSheet.create({
   },
   artistName: {
     fontSize: 24,
-    color: '#E31C79',
+    color: '#fff',
     marginTop: 10,
+    textAlign: 'center',
+  },
+  releasedYear: {
+    fontSize: 18,
+    color: '#E31C79',
+    marginBottom: 10,
+    textAlign: 'center',
   },
   thumbnail: {
-    width: 200,
-    height: 200,
+    width: 330,
+    height: 250,
     borderRadius: 10,
     marginBottom: 10,
-    borderColor: '#E31C79',
-    borderWidth: 2,
-    alignSelf: 'center', 
+    borderColor: '#fff',
+    borderWidth: 0.5,
+    alignSelf: 'center',
     justifyContent: 'center',
   },
 });

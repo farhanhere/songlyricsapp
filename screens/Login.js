@@ -35,13 +35,19 @@ const Login = ({navigation}) => {
         ]
       );
     }
-    catch(error){
-      const errorCode= error.code;
-      const errorMessage=error.message;
-      console.log('Error', errorMessage);
-      
+    catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+  
+      Alert.alert(
+        'Invalid Login Credentials',
+        errorMessage,
+        [
+          { text: 'OK', onPress: () => {} }
+        ]
+      );
     }
-  }
+  };
   
   const goToSignup = () => {
     navigation.navigate('Signup');
